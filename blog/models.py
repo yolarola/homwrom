@@ -36,7 +36,7 @@ class Product(models.Model):
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
 
-    category = models.ForeignKey(Category, verbose_name= 'Категория', on_delete=models.CASCADE())
+    category = models.ForeignKey(Category, verbose_name= 'Категория', on_delete=models.CASCADE)
     name = models.CharField(verbose_name='Название', max_length=255)
     structure = models.CharField(verbose_name='Состав', max_length=255)
     price = models.IntegerField(verbose_name='Цена',)
@@ -53,16 +53,16 @@ class Shelf(models.Model):
     number = models.CharField(verbose_name='Номер', max_length=255)
     block = models.CharField(verbose_name='Блок', max_length=255)
     row = models.IntegerField(verbose_name='Ряд', )
-    place = models.CharField(verbose_name='Место')
+    place = models.CharField(verbose_name='Место',max_length=255)
 
 class Cell(models.Model):
     class Meta:
         verbose_name='Ячейка'
         verbose_name_plural='Ячейки'
 
-    shelf = models.ForeignKey(Shelf,verbose_name='Стелажи',on_delete=models.CASCADE())
+    shelf = models.ForeignKey(Shelf,verbose_name='Стелажи',on_delete=models.CASCADE)
     volume = models.IntegerField(verbose_name='Объем')
-    product= models.ForeignKey(Product, verbose_name='Продукт', on_delete=models.CASCADE())
+    product= models.ForeignKey(Product, verbose_name='Продукт', on_delete=models.CASCADE)
     quantity = models.IntegerField(verbose_name='Количество')
 
 
@@ -72,7 +72,7 @@ class Arrival(models.Model):
         verbose_name_plural='Приходы'
 
     date = models.DateField(verbose_name='Дата')
-    product = models.ForeignKey(Product, verbose_name='Продукт', on_delete=models.CASCADE())
+    product = models.ForeignKey(Product, verbose_name='Продукт', on_delete=models.CASCADE)
     supplier = models.CharField(verbose_name='Поставщик',max_length=255)
     quantity = models.IntegerField(verbose_name='Количество')
 
@@ -82,6 +82,6 @@ class Expenditure(models.Model):
         verbose_name_plural='Расходы'
 
     date = models.DateField(verbose_name='Дата')
-    product = models.ForeignKey(Product, verbose_name='Продукт', on_delete=models.CASCADE())
+    product = models.ForeignKey(Product, verbose_name='Продукт', on_delete=models.CASCADE)
     supplier = models.CharField(verbose_name='Поставщик',max_length=255)
     quantity = models.IntegerField(verbose_name='Количество')

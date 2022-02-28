@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from blog.models import Post, PhotoPostov
+from blog.models import Post, PhotoPostov,Product
 
 class PhotoPostovInline(admin.TabularInline):
     model = PhotoPostov
@@ -16,3 +16,7 @@ class PostAdmin(admin.ModelAdmin):
 
     save_as = True
     save_on_top = True
+    
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['id','name']
