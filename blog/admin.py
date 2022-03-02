@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from blog.models import Post, PhotoPostov,Product
+from blog.models import Arrival, Category, Cell, Expenditure, Post, PhotoPostov,Product, Shelf
 
 class PhotoPostovInline(admin.TabularInline):
     model = PhotoPostov
@@ -20,3 +20,23 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['id','name']
+
+@admin.register(Category)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['id','name']
+
+@admin.register(Shelf)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['id','number','block','row','place']
+
+@admin.register(Cell)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['id','shelf','volume']
+
+@admin.register(Arrival)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['id','date','product']
+
+@admin.register(Expenditure)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['id','date','product']
