@@ -9,9 +9,9 @@ class PhotoPostovInline(admin.TabularInline):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['id', 'nazvanie', 'avtor', 'data_sozdania']
-    search_fields = ['id', 'nazvanie', 'avtor', 'text_posta']
-    list_filter = ['avtor','data_sozdania']
+    list_display = ['id', 'nazvanie', 'user', 'data_sozdania']
+    search_fields = ['id', 'nazvanie', 'user', 'text_posta']
+    list_filter = ['user','data_sozdania']
     inlines = [PhotoPostovInline,]
 
     save_as = True

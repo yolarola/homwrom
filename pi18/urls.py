@@ -18,16 +18,22 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers, serializers, viewsets
 from blog import views
+from blog.api import post_detail, post_list, user_list
 from blog.views import render_home
 
 router = routers.DefaultRouter()
 router.register(r'categories', views.CategoryViewSet)
+#router.register(r'post', views.PostViewSet)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('',render_home),
+    path('',render_home),
      path('api-auth/', include('rest_framework.urls')),
-     path('', include(router.urls)), 
+    #path('', include(router.urls)), 
+    path('posts/',  post_list),
+    path('posts/<int:pk>/', post_detail),
+    path('users/',user_list)
+    
     ]
 

@@ -6,5 +6,30 @@
 </head>
 <body>
 <button onclick="window.location.href = 'http://127.0.0.1:8000/admin';">BUTTON</button>
+
+<script>
+    async function  test(){
+        let data;
+        var raw = "";
+
+        var requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+        
+        await fetch("http://127.0.0.1:8000/posts", requestOptions)
+          .then(response => response.json())
+          .then(result => data = result)
+          .catch(error => console.log('error', error));
+
+        data.forEach(function(item){
+              //  alert(item.nazvanie)
+        })
+    }
+
+    test();
+  
+</script>
+
 </body>
 </html>

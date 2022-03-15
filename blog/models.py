@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 from django.template.defaultfilters import safe
 
@@ -10,7 +10,7 @@ class Post(models.Model):
         verbose_name_plural='Посты'
 
     nazvanie = models.CharField('Название поста', max_length=255,)
-    avtor = models.CharField('Автор', max_length=255, null=True, blank=True)
+    user = models.ForeignKey(User,verbose_name='Пользователь',null=True, on_delete=models.CASCADE)
     data_sozdania = models.DateField('Дата создания', auto_now_add=True)
     text_posta = models.TextField('Текст поста')
     img = models.ImageField('Фото поста', null=True, blank=True)
