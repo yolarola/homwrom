@@ -29,6 +29,9 @@ class PhotoPostov(models.Model):
     img = models.ImageField('Фото поста')
 
 class Category(models.Model):
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
     name = models.CharField(verbose_name='Название', max_length=255)
 
 class Product(models.Model):
@@ -43,7 +46,7 @@ class Product(models.Model):
     weight = models.IntegerField(verbose_name='Вес',)
     color = models.CharField(verbose_name='Цвет',max_length=255)
     size = models.CharField(verbose_name='Габариты',max_length=255)
-    img = models.ImageField('Изображение')
+    #img = models.ImageField('Изображение')
 
 class Shelf(models.Model):
     class Meta:

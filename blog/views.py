@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 # Create your views here.
-from .serializers import CategorySerializer, PostLVSerializer
+from .serializers import CategorySerializerLV,CategorySerializerDV, PostLVSerializer
 from .models import Category, Post
 
 def render_home(request):
@@ -9,7 +9,7 @@ def render_home(request):
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by('name')
-    serializer_class = CategorySerializer
+    serializer_class = CategorySerializerLV
 
 
 
